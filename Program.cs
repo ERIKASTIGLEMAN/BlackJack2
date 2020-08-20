@@ -4,6 +4,13 @@ using System.Linq;
 
 namespace BlackJack2
 {
+    class Card
+    {
+        public string Face { get; set; }
+        public string Suit { get; set; }
+    }
+
+
     class Program
     {
         static void DisplayBlackJackGreeting()
@@ -44,12 +51,57 @@ namespace BlackJack2
                 }
             }
 
+            // MAKE A NEW CARD - w/ class
+
+            var ourCard = new Card()
+            {
+                Face = faces,
+                Suit = suits,
+
+            };
+
+            // MAKE A NEW CARD - w/o class
             var card = "face" + "suit";
+
             deck.Add(card);
 
             Console.WriteLine("We have our deck of cards");
             System.Threading.Thread.Sleep(1500);
 
+
+
+            //  SHUFFLE DECK
+
+            // make n = number of cards in our deck
+            var n = deck.Count();
+
+            // for rightIndex from n - 1 down to 1 do:
+            for (var rightIndex = n - 1; rightIndex >= 1; rightIndex--)
+            {
+                var randomNumberGenerator = new Random();
+
+                //   leftIndex = random integer that is greater than or equal to 0 and LESS than rightIndex
+                var leftIndex = randomNumberGenerator.Next(rightIndex);
+
+
+                //   Now swap the values at rightIndex and leftIndex by doing this:
+                //     leftCard = the value from deck[rightIndex]
+                var leftCard = deck[rightIndex];
+
+                //     rightChard = the value from deck[leftIndex]
+                var rightCard = deck[leftIndex];
+
+                //     deck[rightIndex] = rightCard
+                deck[rightIndex] = rightCard;
+
+                //     deck[leftIndex] = leftCard
+                deck[leftIndex] = leftCard;
+            }
+
+            //  Does this work?
+
+            var topCard = deck[0];
+            Console.WriteLine($"The top card on the deck is the {topCard}");
 
 
 
@@ -73,7 +125,7 @@ namespace BlackJack2
 
 
 
-            //  shuffle deck
+
 
             // randon.Next()
 
