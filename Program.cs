@@ -152,7 +152,10 @@ namespace BlackJack2
                 Console.WriteLine($"The {card.Face} of {card.Suit}");
             }
             // Add the cards' value to total
-
+            var total = 0;
+            {
+                Console.WriteLine($"The total is: ${total}");
+            }
 
             // 10. If they have BUSTED, then goto step 15
             // 11. Ask the player if they want to HIT or STAND
